@@ -18,8 +18,6 @@ $(document).ready(function() {
 
   $('span').text(total);
 
-
-
   $('form').on('submit', function() {
     event.preventDefault();
 
@@ -34,7 +32,20 @@ $(document).ready(function() {
     console.log(newEmployeeObject);
 
 
-    $('table').append('<tr><td>' + newEmployeeObject.firstName + '</td><td>' + newEmployeeObject.yearsOfExperience +'</td></tr>');
+    $('table').append('<tr>');
+    for (var i in newEmployeeObject) {
+    //  console.log('obj.' + i, '=', newEmployeeObject[i]);
+     $('table > tbody > tr:last-child').append('<td>' + newEmployeeObject[i] + '</td>');
+    }
+    $('table').append('</tr>');
+
+    // Output:
+    // "obj.a = 1"
+    // "obj.b = 2"
+    // "obj.c = 3"
+
+    //
+    // $('table').append('<tr><td>' + newEmployeeObject.firstName + '</td><td>' + newEmployeeObject.yearsOfExperience +'</td></tr>');
 
     total += parseFloat(newEmployeeObject.yearsOfExperience);
 
